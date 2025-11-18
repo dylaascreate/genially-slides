@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Genially Showcase</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the responsive iframe container */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            /* 16:9 Aspect Ratio */
+            padding-top: 56.25%; 
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto max-w-7xl px-4 py-6">
+            <h1 class="text-3xl font-bold text-blue-600 text-center">
+                My Genially Showcase
+            </h1>
+            <p class="text-center text-gray-600 mt-2">
+                A collection of my interactive presentations, infographics, and projects.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto max-w-7xl mt-8 p-4 md:flex md:space-x-6">
+
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 bg-white p-6 rounded-xl shadow-lg h-fit mb-6 md:mb-0">
+            <h2 class="text-xl font-semibold mb-4 border-b border-gray-200 pb-3 text-gray-700">
+                Projects
+            </h2>
+            <nav>
+                <ul class="space-y-2">
+                    
+                    <!-- 
+                      INSTRUCTIONS: 
+                      To add your own Genially slides, copy one of the <li> list items below.
+                      1. Change the text (e.g., "Business Presentation") to your project's title.
+                      2. Get your Genially's "Share" link. Make sure it's the "View" link (e.g., https://view.genial.ly/...).
+                      3. Paste that link into the `data-src` attribute, replacing the placeholder URL.
+                    -->
+
+                    <!-- Project 1 -->
+                    <li>
+                        <a href="./genially-fluentu-1/genially.html" class="nav-link block p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
+                           data-src="./genially-fluentu-1/genially.html">
+                           FluentU Courseware v1
+                        </a>
+                    </li>
+                    
+                    <!-- Project 2 -->
+                    <li>
+                        <a href="./genially-fluentu-2/genially.html" class="nav-link block p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
+                           data-src="./genially-fluentu-2/genially.html">
+                           FluentU Courseware v2
+                        </a>
+                    </li>
+
+                    <!-- Project 3 -->
+                    <li>
+                        <a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
+                           data-src="https://view.genially.com/678634acdbe9006bee23bc69?_gl=1*10gbpv0*_gcl_au*MTgyNTUxMDg0OC4xNzYzNDU0MjM5">
+                           Nihongo o Hanasu Coureware
+                        </a>
+                    </li>
+
+                    <!-- Project 4 -->
+                    <li>
+                        <a href="#" class="nav-link block p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200" 
+                           data-src="https://view.genial.ly/5f3a0a3b2a5a0a0d7c0f1a2a">
+                           Among Us: Quiz Template
+                        </a>
+                    </li>
+                    
+                    <!-- Add more projects here -->
+
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Display Area -->
+        <main class="w-full md:flex-1 bg-white p-4 rounded-xl shadow-lg">
+            
+            <!-- Welcome Message (visible by default) -->
+            <div id="welcome-message" class="flex items-center justify-center h-full min-h-[60vh] text-gray-500">
+                <div class="text-center">
+                    <svg class="w-16 h-16 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <p class="text-xl mt-4">Please select a project from the left to view it.</p>
+                </div>
+            </div>
+
+            <!-- Iframe Container (hidden by default) -->
+            <div id="iframe-container" class="iframe-container rounded-lg overflow-hidden" style="display: none;">
+                <iframe id="genially-iframe" 
+                        src="" 
+                        allowfullscreen="true" 
+                        mozallowfullscreen="true" 
+                        webkitallowfullscreen="true">
+                </iframe>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center p-6 mt-8 text-gray-500 text-sm">
+        &copy; <span id="current-year"></span> Your Name. All projects created with 
+        <a href="https://genial.ly/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Genially</a>.
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.nav-link');
+            const iframe = document.getElementById('genially-iframe');
+            const iframeContainer = document.getElementById('iframe-container');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Stop the link from navigating
+
+                    // Get the URL from the data-src attribute
+                    const newSrc = link.getAttribute('data-src');
+
+                    // Set the iframe src
+                    iframe.src = newSrc;
+
+                    // Show the iframe and hide the welcome message
+                    iframeContainer.style.display = 'block';
+                    welcomeMessage.style.display = 'none';
+
+                    // Update active link styling
+                    links.forEach(l => {
+                        l.classList.remove('bg-blue-100', 'text-blue-700', 'font-semibold');
+                    });
+                    
+                    link.classList.add('bg-blue-100', 'text-blue-700', 'font-semibold');
+                });
+            });
+
+            // Optional: Click the first link by default
+            // if (links.length > 0) {
+            //     links[0].click();
+            // }
+        });
+    </script>
+
+</body>
+</html>

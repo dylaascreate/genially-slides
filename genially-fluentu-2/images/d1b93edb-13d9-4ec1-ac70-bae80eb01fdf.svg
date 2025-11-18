@@ -1,0 +1,54 @@
+<svg class="hands" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <style>
+    
+    .container {
+      transform-origin: 50% 50%;
+      transform: rotate(-45deg);
+      animation: shooter 2s cubic-bezier(0.4, 0, 0.4, 1) infinite;
+    }
+    
+    .shooter {
+      transform-origin: 0% 100%;
+    }
+
+    @keyframes shooter {
+      0% {
+        transform: rotate(-55deg) translate(15px, 5px);
+      }
+      20% {
+        transform: rotate(-35deg) translate(0px, 0px);
+      }
+      30% {
+        transform: rotate(-55deg) translate(0px, 0px);
+      }
+      40% {
+        transform: rotate(-35deg) translate(0px, 0px);
+      }
+      50% {
+        transform: rotate(-55deg) translate(0px, 0px);
+      }
+      60% {
+        transform: rotate(-35deg) translate(0px, 0px);
+      }
+      80% {
+        transform: rotate(-55deg) translate(15px, 5px);
+        animation-timing-function: cubic-bezier(0.4, 1, 0.4, 1);
+      }
+      100% {
+        transform: rotate(-55deg) translate(15px, 5px);
+      }
+
+    }
+
+
+  </style>
+  <g class="container">
+    <g class="shooter">
+      <path fill="#E8E6F0" stroke="#121212" stroke-linejoin="round" stroke-width="6" d="m56 84.004.001 14-34 .003-.001-14z"/>
+      <path fill="#E8E6F0" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" d="M52.712 80.004c2.94 0 5.286-2.396 5.285-5.303 0-2.908-2.345-5.303-5.286-5.303-4.395 0-8.142-1.055-10.619-2.724-2.299-1.55-3.524-3.586-3.524-6.366 0-2.907-2.346-5.303-5.286-5.302-2.941 0-5.286 2.396-5.286 5.303 0 6.747 3.358 11.905 8.202 15.17 4.67 3.147 10.638 4.526 16.514 4.525Z"/>
+      <path fill="#5AB6E8" stroke="#121212" stroke-linejoin="round" stroke-width="6" d="m106.996 56.004.004 48-57 .005-.004-48z"/>
+      <path fill="#EEBD4B" d="m79.998 59.004-13.642 42.001-13.355.001 13.642-42.001 13.355-.001ZM104.996 59l-13.642 42.001-13.355.001 13.642-42L104.996 59Z"/>
+      <path fill="#5AB6E8" stroke="#121212" stroke-linejoin="round" stroke-width="6" d="m100.995 57.88.003 44.245c.001 6.29 7.652 9.388 12.029 4.869l21.429-22.123a7 7 0 0 0-.001-9.742l-21.433-22.12c-4.377-4.517-12.028-1.419-12.027 4.872Z"/>X
+    </g>
+  </g>
+</svg>
